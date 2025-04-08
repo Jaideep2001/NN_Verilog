@@ -9,9 +9,11 @@ Modular and pipelined design
 Uses signed weights and biases
 
 <h3 >Processor design:</h3>
+
 ![PipelineDiag_beta](https://github.com/user-attachments/assets/fa32cfc7-2f3c-4e1e-ba12-625056dca277)
 
-<h3 >Network Architecture:</h3>h3 >
+<h3 >Network Architecture:</h3 >
+
 The neural network consists of 4 layers, each with hardcoded weights and biases:
 
     Layer|	Inputs|	Outputs| Description
