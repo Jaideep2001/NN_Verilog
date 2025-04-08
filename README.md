@@ -1,4 +1,4 @@
-Pipelined Neural Network Inference Processor (Verilog)
+**Pipelined Neural Network Inference Processor (Verilog)**
 
 This repository contains the source code for a hardware-implemented neural network inference engine, built using Verilog. The project emulates the feedforward behavior of a fully connected neural network using a pipelined architecture. It processes input data through a series of weight and bias computations, using fixed weights stored in a ROM.
 (This project was built as part of a broader study into combining neural network computation with digital design. The model was pre-trained using software (Python) and weights were exported manually for use in hardware.)
@@ -13,14 +13,16 @@ Processor design:
 
 Network Architecture:
 The neural network consists of 4 layers, each with hardcoded weights and biases:
-Layer	Inputs	Outputs	Description
-1	3	3	Dense + Bias
-2	3	6	Dense + Bias
-3	6	4	Dense + Bias
-4	4	1	Final output neuron
+
+    Layer|	Inputs|	Outputs| Description
+    1	 |  3	  | 3	   | Dense + Bias
+    2    |	3	  | 6	   | Dense + Bias
+    3	 |  6	  | 4	   | Dense + Bias
+    4	 |  4	  | 1	   | Final output neuron
 
 All weights and biases are encoded as signed 10-bit fixed-point values and retrieved based on the current layer_number.
-🧩 Module Overview
+
+Module Overview:
 
     weights_rom
     Stores hardcoded weights and biases for each layer.
@@ -40,14 +42,15 @@ All weights and biases are encoded as signed 10-bit fixed-point values and retri
     alu_result_register
     Captures the ALU result for possible feedback into the next layer.
 
-🧪 Testbench
+Testbench:
 
 The nn_hdl_testbench simulates a full forward pass through all four layers using a sample input:
 
 input_data = {64'sd10, -64'sd5, 64'sd40}; // Example 3-element input vector
 
 Clock cycles are used to sequence through the layers with the MUX switching between original input and ALU feedback.
-💡 How It Works
+
+How It Works:
 
     Load input vector into input_register
 
@@ -62,22 +65,16 @@ Clock cycles are used to sequence through the layers with the MUX switching betw
 
     Final output is available after all stages
 
-📈 Simulation Output
+Simulation Output
 
 Simulation waveform can be viewed by inspecting tinynn_results_real.vcd in any VCD viewer (e.g., GTKWave). The testbench fully verifies the functional correctness of all pipeline stages.
 
 Running the Simulation:
 
-iverilog -o nn_test nn_hdl_testbench.v *.v
-vvp nn_test
-gtkwave tinynn_results_real.vcd
+    iverilog -o nn_test nn_hdl_testbench.v *.v
+    vvp nn_test
+    gtkwave tinynn_results_real.vcd
 
-Future Extensions
-
-    Integrate ReLU or other activation functions
-
-    Expand ROM to support more layers/neuron sizes
-
-    Add softmax or classification output layer
-
-    Optional: Hardware-based training module (gradient descent)
+Future Extensions:
+Expand ROM to support more layers/neuron sizes
+Add softmax or classification output layer
