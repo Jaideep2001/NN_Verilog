@@ -1,4 +1,4 @@
-**Pipelined Neural Network Inference Processor (Verilog)**
+<h1 >**Pipelined Neural Network Inference Processor (Verilog)** </h1>
 
 This repository contains the source code for a hardware-implemented neural network inference engine, built using Verilog. The project emulates the feedforward behavior of a fully connected neural network using a pipelined architecture. It processes input data through a series of weight and bias computations, using fixed weights stored in a ROM.
 (This project was built as part of a broader study into combining neural network computation with digital design. The model was pre-trained using software (Python) and weights were exported manually for use in hardware.)
