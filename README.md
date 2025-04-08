@@ -77,4 +77,4 @@ Running the Simulation:
 
 Future Extensions:
 Expand ROM to support more layers/neuron sizes
-Add softmax or classification output layer
+\nAdd softmax or classification output layer
